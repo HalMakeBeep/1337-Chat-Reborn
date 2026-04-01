@@ -10,7 +10,7 @@ signInButton.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
 });
 
-const BASE_URL = "https://one337-chat-reborn-server.onrender.com/";
+const BASE_URL = "https://one337-chat-reborn-server.onrender.com";
 
 const Toast = Swal.mixin({
     toast: true,

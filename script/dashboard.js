@@ -1,4 +1,4 @@
-const BASE_URL = "https://one337-chat-reborn-server.onrender.com/";
+const BASE_URL = "https://one337-chat-reborn-server.onrender.com";
 
 const token = localStorage.getItem("token");
 if (!token) window.location.href = "./index.html";
