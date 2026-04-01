@@ -10,7 +10,7 @@ signInButton.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
 });
 
-const BASE_URL = "http://localhost:1337";
+const BASE_URL = "https://one337-chat-reborn-server.onrender.com/";
 
 const Toast = Swal.mixin({
     toast: true,
@@ -22,10 +22,6 @@ Toast.fire({
     icon: "success",
     title: "1337 Chat\n\nMade By Payson\ngithub.com/paysonism",
 });
-
-// =====================================================
-//  SIGNUP
-// =====================================================
 
 const signupForm = document.getElementById("signUpForm");
 signupForm.addEventListener("submit", (e) => {
@@ -89,10 +85,6 @@ const register = async (payload) => {
         });
     }
 };
-
-// =====================================================
-//  LOGIN
-// =====================================================
 
 const loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", (e) => {

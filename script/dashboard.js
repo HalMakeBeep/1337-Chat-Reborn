@@ -1,8 +1,4 @@
-// =====================================================
-//  1337 Chat — Dashboard Client
-// =====================================================
-
-const BASE_URL = "http://localhost:1337";
+const BASE_URL = "https://one337-chat-reborn-server.onrender.com/";
 
 const token = localStorage.getItem("token");
 if (!token) window.location.href = "./index.html";

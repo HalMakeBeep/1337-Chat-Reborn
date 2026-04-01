@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ========== RESET ========== */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -10,7 +9,6 @@
 ::-webkit-scrollbar { display: none; }
 html { scrollbar-width: none; }
 
-/* ========== CUSTOM PROPERTIES ========== */
 :root {
     --bg: #0d0d1a;
     --surface: #12102a;
@@ -25,7 +23,6 @@ html { scrollbar-width: none; }
     --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ========== ANIMATED BACKGROUND ORBS ========== */
 .bg-orbs {
     position: fixed;
     inset: 0;
@@ -86,7 +83,6 @@ html { scrollbar-width: none; }
     50% { transform: translate(-40%, -60%) scale(1.2); }
 }
 
-/* ========== PAGE ========== */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
@@ -111,7 +107,6 @@ body {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ========== GLASS CARD ========== */
 .container {
     position: relative;
     width: 850px;
@@ -128,7 +123,6 @@ body {
     overflow: hidden;
 }
 
-/* ========== FORM CONTAINERS ========== */
 .form-container {
     position: absolute;
     top: 0;
@@ -167,7 +161,6 @@ body {
 
 /* Panel transitions handled by opacity + transition on .form-container */
 
-/* ========== FORMS ========== */
 form {
     display: flex;
     flex-direction: column;
@@ -206,7 +199,6 @@ form {
     margin-bottom: 4px;
 }
 
-/* ========== INPUTS ========== */
 input {
     width: 100%;
     padding: 14px 16px;
@@ -231,7 +223,6 @@ input:focus {
     box-shadow: 0 2px 16px rgba(123, 47, 255, 0.15);
 }
 
-/* ========== BUTTONS ========== */
 button {
     padding: 13px 44px;
     border: none;
@@ -284,7 +275,6 @@ button.ghost:hover {
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
-/* ========== OVERLAY ========== */
 .overlay-container {
     position: absolute;
     top: 0;
@@ -360,7 +350,6 @@ button.ghost:hover {
     margin: 16px 0 28px;
 }
 
-/* ========== MOBILE TABS ========== */
 .mobile-tabs {
     display: none;
     position: absolute;
@@ -406,7 +395,6 @@ button.ghost:hover {
     border-radius: 2px;
 }
 
-/* ========== SweetAlert2 DARK OVERRIDE ========== */
 .swal2-popup {
     background: var(--surface) !important;
     color: var(--text-primary) !important;
