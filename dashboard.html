@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1337 - Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/2a66bc2625.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <!-- ====== SIDEBAR ====== -->
+        <aside class="sidebar" id="sidebar">
+            <header class="sidebar-header">
+                <h1 class="logo">13<span class="logo-accent">37</span></h1>
+                <div id="profile_section">
+                    <img id="profile_pic" width="36" height="36" src="" alt="Profile" />
+                    <h2 id="profile_name"></h2>
+                    <button id="settingsBtn" class="icon-btn" title="Settings">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                    <button id="logout" class="icon-btn" title="Logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Sidebar tabs -->
+            <div class="sidebar-tabs">
+                <button class="sidebar-tab active" data-tab="chats">
+                    <span>Chats</span>
+                    <span class="tab-badge hidden" id="chatsTabBadge">0</span>
+                </button>
+                <button class="sidebar-tab" data-tab="friends">
+                    <span>Friends</span>
+                    <span class="tab-badge hidden" id="friendsTabBadge">0</span>
+                </button>
+                <button class="sidebar-tab" data-tab="groups">
+                    <span>Groups</span>
+                    <span class="tab-badge hidden" id="groupsTabBadge">0</span>
+                </button>
+            </div>
+
+            <!-- Chats tab content -->
+            <div class="tab-content" id="tab-chats">
+                <div id="mainDiv" class="search-area">
+                    <div class="search_container">
+                        <input type="search" id="query" placeholder="Search users..." />
+                        <button id="searchBtn" title="Search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="search_users_list_container">
+                    <div id="search_users_list"></div>
+                </div>
+                <div id="msgContainer" class="contacts-scroll">
+                    <ul class="users_list"></ul>
+                </div>
+            </div>
+
+            <!-- Friends tab content -->
+            <div class="tab-content hidden" id="tab-friends">
+                <div class="search-area friends-actions-bar">
+                    <button id="openAddFriendModal" class="action-btn full-width">
+                        <i class="fa-solid fa-plus"></i> Add Friend
+                    </button>
+                </div>
+                <div id="friend-requests-section" class="friends-section">
+                    <h3 class="section-title">Pending Requests</h3>
+                    <div id="friend-requests-list"></div>
+                </div>
+                <div class="friends-section">
+                    <h3 class="section-title">Friends</h3>
+                    <div id="friends-list" class="contacts-scroll"></div>
+                </div>
+            </div>
+
+            <!-- Groups tab content -->
+            <div class="tab-content hidden" id="tab-groups">
+                <div class="search-area">
+                    <button id="createGroupBtn" class="action-btn full-width">
+                        <i class="fa-solid fa-plus"></i> Create Group
+                    </button>
+                </div>
+                <div id="groups-list" class="contacts-scroll"></div>
+            </div>
+        </aside>
+
+        <!-- ====== CHAT PANEL ====== -->
+        <main class="chat-panel" id="usersProfile">
+            <div class="empty-state">
+                <div class="empty-state-icon">
+                    <i class="fa-regular fa-comments"></i>
+                </div>
+                <h2>1337 Chat</h2>
+                <p>Select a conversation to start messaging</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- ====== SETTINGS MODAL ====== -->
+    <div class="modal-overlay hidden" id="settingsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="icon-btn modal-close" id="closeSettings"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label>Display Name</label>
+                    <input type="text" id="settingsName" maxlength="50" />
+                </div>
+                <div class="setting-group">
+                    <label>Profile Picture URL</label>
+                    <input type="url" id="settingsPicture" />
+                </div>
+                <div class="setting-group">
+                    <label>Theme</label>
+                    <div class="theme-swatches" id="themeSwatches">
+                        <button class="swatch" data-theme="purple" style="background: #7b2fff;"></button>
+                        <button class="swatch" data-theme="blue" style="background: #3b82f6;"></button>
+                        <button class="swatch" data-theme="green" style="background: #10b981;"></button>
+                        <button class="swatch" data-theme="red" style="background: #ef4444;"></button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Font Size</label>
+                    <div class="font-size-btns" id="fontSizeBtns">
+                        <button class="font-btn" data-size="small">A</button>
+                        <button class="font-btn" data-size="medium">A</button>
+                        <button class="font-btn" data-size="large">A</button>
+                    </div>
+                </div>
+                <div class="setting-group toggle-group">
+                    <label>Read Receipts</label>
+                    <input type="checkbox" id="settingsReadReceipts" checked />
+                </div>
+                <div class="setting-group toggle-group">
+                    <label>Notifications</label>
+                    <input type="checkbox" id="settingsNotifications" checked />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn" id="saveSettings">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== CREATE GROUP MODAL ====== -->
+    <div class="modal-overlay hidden" id="createGroupModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Create Group</h2>
+                <button class="icon-btn modal-close" id="closeCreateGroup"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label>Group Name</label>
+                    <input type="text" id="groupNameInput" maxlength="50" placeholder="Enter group name..." />
+                </div>
+                <div class="setting-group">
+                    <label>Group Picture URL (optional)</label>
+                    <input type="url" id="groupPictureInput" placeholder="https://..." />
+                </div>
+                <div class="setting-group">
+                    <label>Add Friends</label>
+                    <div id="groupFriendsList" class="group-friends-list"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn" id="confirmCreateGroup">Create Group</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== ADD FRIEND MODAL ====== -->
+    <div class="modal-overlay hidden" id="addFriendModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add Friend</h2>
+                <button class="icon-btn modal-close" id="closeAddFriend"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="search_container modal-search-row">
+                    <input type="search" id="friendSearchInput" placeholder="Search users to add..." />
+                    <button id="friendSearchBtn" title="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <p id="friendSearchHint" class="empty-hint modal-empty-hint">Search for users to send a friend request.</p>
+                <div id="friendSearchResults" class="modal-search-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        crossorigin="anonymous"></script>
+    <script src="./script/dashboard.js"></script>
+</body>
+
+</html>
