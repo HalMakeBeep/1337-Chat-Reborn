@@ -8,6 +8,8 @@ Keep in mind that this is the official release repository so the BASE_URL will b
 
 To test it out click [here](https://halmakebeep.github.io/1337-Chat-Reborn). Make an account and try searching for "payson1337" and messaging me!
 
+**If nothing happens, go to https://one337-chat-reborn-server.onrender.com/ and wait for the server to show a success message, Then try again.**
+
 Screenshot Previews:
 
 ![Login/Signup](image-2.png)
